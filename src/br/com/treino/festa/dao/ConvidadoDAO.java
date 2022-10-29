@@ -34,16 +34,16 @@ public class ConvidadoDAO {
 		return convidados;
 	}
 
-	public void salvar(Convidado convidado) {
+	public void salvar(Convidado convidado) throws Exception {
 		String sql = "INSERT INTO convidado (nome, quantidade_acompanhantes) VALUES (?, ?)";
 
 		try (PreparedStatement pstm = connection.prepareStatement(sql)) {
 			pstm.setString(1, convidado.getNome());
 			pstm.setInt(2, convidado.getQuantidadeAcompanhantes());
-			pstm.execute();
+			System.out.println(pstm.execute());
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new Exception(e);
 		}
 	}
 

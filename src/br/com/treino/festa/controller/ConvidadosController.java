@@ -114,7 +114,12 @@ public class ConvidadosController extends HttpServlet {
 
 		Convidado convidado = new Convidado(nome, quantidadeAcompanhantes);
 
-		convidadoDAO.salvar(convidado);
+		try {
+			convidadoDAO.salvar(convidado);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		listarConvidados(request, response);
 	}
